@@ -14,6 +14,41 @@ namespace TCC.Agenda.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PrestadorTipoDeServico>(entity =>
+            {
+                entity.HasOne(a => a.Prestador)
+                    .WithMany(b => b.TiposDeServico)
+                    .HasForeignKey(c => c.PrestadorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(a => a.TipoDeServico)
+                    .WithMany(b => b.Prestadores)
+                    .HasForeignKey(c => c.TipoDeServicoId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<AgendaModel>(entity =>
+            {
+                entity.HasOne(a => a.Prestador)
+                   .WithMany(b => b.Agendas)
+                   .HasForeignKey(c => c.PrestadorId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(a => a.Usuario)
+                   .WithMany(b => b.Agendas)
+                   .HasForeignKey(c => c.UsuarioId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(a => a.TipoDeServico)
+                    .WithMany(b => b.Agendas)
+                    .HasForeignKey(c => c.TipoDeServicoId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+        }
+
+
         public DbSet<TCC.Agenda.Models.AgendaModel> Agendas { get; set; }
 
         public DbSet<TCC.Agenda.Models.EmpresaModel> Empresas { get; set; }
