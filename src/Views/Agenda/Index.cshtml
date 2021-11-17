@@ -1,0 +1,95 @@
+﻿@model IEnumerable<TCC.Agenda.Models.AgendaModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prestador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHoraAgendada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHoraTermino)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDeServico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorCobrado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Realizado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CanceladoUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CanceladoPrestador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotivoDoCancelamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHoraDoCancelamento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.UsuarioId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prestador.PrestadorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHoraAgendada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHoraTermino)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDeServico.TipoDeServicoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorCobrado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Realizado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CanceladoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CanceladoPrestador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotivoDoCancelamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHoraDoCancelamento)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AgendaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AgendaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AgendaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
