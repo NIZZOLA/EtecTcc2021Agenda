@@ -59,7 +59,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="PlanoId" class="control-label"></label>
-                <select asp-for="PlanoId" class ="form-control" asp-items="ViewBag.PlanoId"></select>
+                <select asp-for="PlanoId" class ="form-control" asp-items="ViewBag.PlanoId">
+                    <option value="0">Selecione</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="DataCadastro" class="control-label"></label>

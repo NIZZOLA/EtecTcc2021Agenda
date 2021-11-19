@@ -10,9 +10,10 @@ using TCC.Agenda.Models;
 
 namespace TCC.Agenda.Controllers
 {
-    public class PlanoController : Controller
+    public class PlanoController : ControllerExtended
     {
         private readonly TCCAgendaContext _context;
+        private string nomeController = "Planos";
 
         public PlanoController(TCCAgendaContext context)
         {
@@ -22,12 +23,16 @@ namespace TCC.Agenda.Controllers
         // GET: Plano
         public async Task<IActionResult> Index()
         {
+            base.CriaViewBags("Index", this.nomeController);
             return View(await _context.Planos.ToListAsync());
         }
+
+        
 
         // GET: Plano/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
+            CriaViewBags("Details", this.nomeController);
             if (id == null)
             {
                 return NotFound();
@@ -46,6 +51,7 @@ namespace TCC.Agenda.Controllers
         // GET: Plano/Create
         public IActionResult Create()
         {
+            CriaViewBags("Create", this.nomeController);
             return View();
         }
 
@@ -56,6 +62,7 @@ namespace TCC.Agenda.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PlanoId,Descricao,ValorMensal,LimiteDeUsuario,Ativo")] PlanoModel planoModel)
         {
+            CriaViewBags("Create", this.nomeController);
             if (ModelState.IsValid)
             {
                 planoModel.PlanoId = Guid.NewGuid();
@@ -69,6 +76,7 @@ namespace TCC.Agenda.Controllers
         // GET: Plano/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
+            CriaViewBags("Edit", this.nomeController);
             if (id == null)
             {
                 return NotFound();
@@ -89,6 +97,7 @@ namespace TCC.Agenda.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("PlanoId,Descricao,ValorMensal,LimiteDeUsuario,Ativo")] PlanoModel planoModel)
         {
+            CriaViewBags("Edit", this.nomeController);
             if (id != planoModel.PlanoId)
             {
                 return NotFound();
@@ -120,6 +129,7 @@ namespace TCC.Agenda.Controllers
         // GET: Plano/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
+            CriaViewBags("Delete", this.nomeController);
             if (id == null)
             {
                 return NotFound();
@@ -140,6 +150,8 @@ namespace TCC.Agenda.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
+            CriaViewBags("Delete", this.nomeController);
+
             var planoModel = await _context.Planos.FindAsync(id);
             _context.Planos.Remove(planoModel);
             await _context.SaveChangesAsync();

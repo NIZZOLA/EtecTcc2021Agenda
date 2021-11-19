@@ -16,6 +16,7 @@ namespace TCC.Agenda.Models
         [MaxLength(50)]
         public string Descricao { get; set; }
 
+        [Column(TypeName = "decimal(15,2)")]
         public decimal ValorMensal { get; set; }
 
         public int LimiteDeUsuario { get; set; }

@@ -19,6 +19,8 @@ namespace TCC.Agenda.Models
         public string Detalhes { get; set; }
 
         public int DuracaoMinutos { get; set; }
+
+        [Column(TypeName = "decimal(15,2)")]
         public Decimal ValorCobrado { get; set; }
 
         public bool Ativo { get; set; }
