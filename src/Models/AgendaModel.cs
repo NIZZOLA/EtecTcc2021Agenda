@@ -29,6 +29,7 @@ namespace TCC.Agenda.Models
         public Guid TipoDeServicoId { get; set; }
         public TipoDeServicoModel TipoDeServico { get; set; }
 
+        [Column(TypeName = "decimal(15,2)")]
         public decimal ValorCobrado { get; set; }
 
         public bool Realizado { get; set; }
