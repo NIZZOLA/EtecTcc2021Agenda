@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TCC.Agenda.Models.EmpresaModel>
+@model IEnumerable<TCC.Agenda.Models.EmpresaModel>
 
 @{
     ViewData["Title"] = ViewBag.NomeController;
@@ -21,14 +21,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.CpfCnpj)
             </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Cidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            
             <th>
                 @Html.DisplayNameFor(model => model.Plano)
             </th>
@@ -45,6 +37,7 @@
         @foreach (var item in Model)
         {
             <tr>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>

@@ -1,13 +1,12 @@
 ﻿@model TCC.Agenda.Models.TipoDeServicoModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
 }
 
-<h1>Details</h1>
+<h1>Detalhes do Serviço Cadastrado</h1>
 
-<div>
-    <h4>TipoDeServicoModel</h4>
+<div>    
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -44,11 +43,14 @@
             @Html.DisplayNameFor(model => model.Empresa)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Empresa.EmpresaId)
+            @Html.DisplayFor(model => model.Empresa.Nome)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.TipoDeServicoId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<form asp-action="Detalhes">
+    <input type="hidden" asp-for="TipoDeServicoId" />
+    <a asp-action="Index"><i class="bi bi-arrow-return-left" Title="Voltar para tela inicial"></i></a>
+    <a asp-action="Edit" asp-route-id="@Model.TipoDeServicoId"><i class="bi bi-pencil-square" title="Editar"></i></a>
+
+</form>
