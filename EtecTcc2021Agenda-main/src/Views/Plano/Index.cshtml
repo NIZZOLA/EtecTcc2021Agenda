@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TCC.Agenda.Models.PlanoModel>
+
+@{
+    ViewData["Title"] = ViewBag.NomeController;
+}
+
+<h1>@ViewBag.Acao de @ViewBag.NomeController</h1>
+
+<p>
+   <a asp-action="Create"><i class="bi bi-clipboard-plus"></i>CriarNovo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorMensal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LimiteDeUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorMensal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LimiteDeUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+             <td>
+                    <a asp-action="Edit" asp-route-id="@item.PlanoId"><i class="bi bi-pencil-square" title="Editar"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.PlanoId"><i class="bi bi-folder-plus" title="Consultar"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.PlanoId"><i class="bi bi-trash-fill" title="Excluir"></i></a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
