@@ -49,7 +49,7 @@
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PessoaFisica)
+                    @Html.Raw(item.PessoaFisica == true ? "Pessoa" : "Empresa")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CpfCnpj)
@@ -63,7 +63,7 @@
                 </td>
                 
                 <td>
-                    @Html.DisplayFor(modelItem => item.Plano.PlanoId)
+                    @Html.DisplayFor(modelItem => item.Plano.Descricao)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DataCadastro)

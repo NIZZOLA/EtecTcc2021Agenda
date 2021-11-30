@@ -64,6 +64,7 @@ namespace TCC.Agenda.Controllers
             if (ModelState.IsValid)
             {
                 empresaModel.EmpresaId = Guid.NewGuid();
+                empresaModel.DataCadastro = DateTime.Now;
                 _context.Add(empresaModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -121,7 +122,7 @@ namespace TCC.Agenda.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "Descricao", empresaModel.PlanoId);
+            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "Descricao", empresaModel.Plano);
             return View(empresaModel);
         }
 
