@@ -26,7 +26,7 @@ namespace TCC.Agenda
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews()
-                .AddRazorRuntimeCompilation();
+            .AddRazorRuntimeCompilation();
 
             services.AddDbContext<TCCAgendaContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("TCCAgendaContext")));
