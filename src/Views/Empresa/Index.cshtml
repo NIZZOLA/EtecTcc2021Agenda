@@ -21,14 +21,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.CpfCnpj)
             </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Cidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            
             <th>
                 @Html.DisplayNameFor(model => model.Plano)
             </th>
@@ -45,38 +37,30 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PessoaFisica)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CpfCnpj)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cidade)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estado)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.Plano.PlanoId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataCadastro)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataInativacao)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.EmpresaId"><i class="bi bi-pencil-square" title="Editar"></i></a>
-                    <a asp-action="Details" asp-route-id="@item.EmpresaId"><i class="bi bi-folder2-open" title="Consultar"></i></a>
-                    <a asp-action="Delete" asp-route-id="@item.EmpresaId"><i class="bi bi-trash" title="Excluir"></i> </a>
-                </td>
-            </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PessoaFisica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CpfCnpj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plano.PlanoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInativacao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EmpresaId"><i class="bi bi-pencil-square" title="Editar"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.EmpresaId"><i class="bi bi-folder2-open" title="Detalhes"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.EmpresaId"><i class="bi bi-trash" title="Excluir"></i></a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
