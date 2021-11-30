@@ -8,25 +8,25 @@ using Microsoft.EntityFrameworkCore;
 using TCC.Agenda.Data;
 using TCC.Agenda.Models;
 
-namespace TCC.Agenda.Controllers
+namespace TCC.Agenda.Views
 {
-    public class TipoDeServicoController : Controller
+    public class EmpresaModelController : Controller
     {
         private readonly TCCAgendaContext _context;
 
-        public TipoDeServicoController(TCCAgendaContext context)
+        public EmpresaModelController(TCCAgendaContext context)
         {
             _context = context;
         }
 
-        // GET: TipoDeServico
+        // GET: EmpresaModel
         public async Task<IActionResult> Index()
         {
-            var tCCAgendaContext = _context.TipoDeServicos.Include(t => t.Empresa);
+            var tCCAgendaContext = _context.Empresas.Include(e => e.Plano);
             return View(await tCCAgendaContext.ToListAsync());
         }
 
-        // GET: TipoDeServico/Details/5
+        // GET: EmpresaModel/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -34,43 +34,43 @@ namespace TCC.Agenda.Controllers
                 return NotFound();
             }
 
-            var tipoDeServicoModel = await _context.TipoDeServicos
-                .Include(t => t.Empresa)
-                .FirstOrDefaultAsync(m => m.TipoDeServicoId == id);
-            if (tipoDeServicoModel == null)
+            var empresaModel = await _context.Empresas
+                .Include(e => e.Plano)
+                .FirstOrDefaultAsync(m => m.EmpresaId == id);
+            if (empresaModel == null)
             {
                 return NotFound();
             }
 
-            return View(tipoDeServicoModel);
+            return View(empresaModel);
         }
 
-        // GET: TipoDeServico/Create
+        // GET: EmpresaModel/Create
         public IActionResult Create()
         {
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "Nome");
+            ViewData["PlanoId"] = new SelectList(_context.Planos, "PlanoId", "PlanoId");
             return View();
         }
 
-        // POST: TipoDeServico/Create
+        // POST: EmpresaModel/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TipoDeServicoId,Nome,Detalhes,DuracaoMinutos,ValorCobrado,Ativo,EmpresaId")] TipoDeServicoModel tipoDeServicoModel)
+        public async Task<IActionResult> Create([Bind("EmpresaId,Nome,PessoaFisica,CpfCnpj,Rua,Numero,Bairro,Cidade,Estado,Cep,PlanoId,DataCadastro,DataInativacao")] EmpresaModel empresaModel)
         {
             if (ModelState.IsValid)
             {
-                tipoDeServicoModel.TipoDeServicoId = Guid.NewGuid();
-                _context.Add(tipoDeServicoModel);
+                empresaModel.EmpresaId = Guid.NewGuid();
+                _context.Add(empresaModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "Nome", tipoDeServicoModel.EmpresaId);
-            return View(tipoDeServicoModel);
+            ViewData["PlanoId"] = new SelectList(_context.Planos, "PlanoId", "PlanoId", empresaModel.PlanoId);
+            return View(empresaModel);
         }
 
-        // GET: TipoDeServico/Edit/5
+        // GET: EmpresaModel/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -78,23 +78,23 @@ namespace TCC.Agenda.Controllers
                 return NotFound();
             }
 
-            var tipoDeServicoModel = await _context.TipoDeServicos.FindAsync(id);
-            if (tipoDeServicoModel == null)
+            var empresaModel = await _context.Empresas.FindAsync(id);
+            if (empresaModel == null)
             {
                 return NotFound();
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "Nome", tipoDeServicoModel.EmpresaId);
-            return View(tipoDeServicoModel);
+            ViewData["PlanoId"] = new SelectList(_context.Planos, "PlanoId", "PlanoId", empresaModel.PlanoId);
+            return View(empresaModel);
         }
 
-        // POST: TipoDeServico/Edit/5
+        // POST: EmpresaModel/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("TipoDeServicoId,Nome,Detalhes,DuracaoMinutos,ValorCobrado,Ativo,EmpresaId")] TipoDeServicoModel tipoDeServicoModel)
+        public async Task<IActionResult> Edit(Guid id, [Bind("EmpresaId,Nome,PessoaFisica,CpfCnpj,Rua,Numero,Bairro,Cidade,Estado,Cep,PlanoId,DataCadastro,DataInativacao")] EmpresaModel empresaModel)
         {
-            if (id != tipoDeServicoModel.TipoDeServicoId)
+            if (id != empresaModel.EmpresaId)
             {
                 return NotFound();
             }
@@ -103,12 +103,12 @@ namespace TCC.Agenda.Controllers
             {
                 try
                 {
-                    _context.Update(tipoDeServicoModel);
+                    _context.Update(empresaModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TipoDeServicoModelExists(tipoDeServicoModel.TipoDeServicoId))
+                    if (!EmpresaModelExists(empresaModel.EmpresaId))
                     {
                         return NotFound();
                     }
@@ -119,11 +119,11 @@ namespace TCC.Agenda.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "Nome", tipoDeServicoModel.EmpresaId);
-            return View(tipoDeServicoModel);
+            ViewData["PlanoId"] = new SelectList(_context.Planos, "PlanoId", "PlanoId", empresaModel.PlanoId);
+            return View(empresaModel);
         }
 
-        // GET: TipoDeServico/Delete/5
+        // GET: EmpresaModel/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -131,31 +131,31 @@ namespace TCC.Agenda.Controllers
                 return NotFound();
             }
 
-            var tipoDeServicoModel = await _context.TipoDeServicos
-                .Include(t => t.Empresa)
-                .FirstOrDefaultAsync(m => m.TipoDeServicoId == id);
-            if (tipoDeServicoModel == null)
+            var empresaModel = await _context.Empresas
+                .Include(e => e.Plano)
+                .FirstOrDefaultAsync(m => m.EmpresaId == id);
+            if (empresaModel == null)
             {
                 return NotFound();
             }
 
-            return View(tipoDeServicoModel);
+            return View(empresaModel);
         }
 
-        // POST: TipoDeServico/Delete/5
+        // POST: EmpresaModel/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var tipoDeServicoModel = await _context.TipoDeServicos.FindAsync(id);
-            _context.TipoDeServicos.Remove(tipoDeServicoModel);
+            var empresaModel = await _context.Empresas.FindAsync(id);
+            _context.Empresas.Remove(empresaModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TipoDeServicoModelExists(Guid id)
+        private bool EmpresaModelExists(Guid id)
         {
-            return _context.TipoDeServicos.Any(e => e.TipoDeServicoId == id);
+            return _context.Empresas.Any(e => e.EmpresaId == id);
         }
     }
 }
