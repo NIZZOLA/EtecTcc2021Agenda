@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,8 +15,10 @@ namespace TCC.Agenda.Models
         public Guid EmpresaId { get; set; }
         [MaxLength(50)]
         public string Nome { get; set; }
+        [Display(Name ="Tipo")]
         public bool PessoaFisica { get; set; }
         [MaxLength(18)]
+        [Display(Name = "CPF-CNPJ")]
         public string CpfCnpj { get; set; }
         [MaxLength(30)]
         public string Rua { get; set; }
@@ -32,10 +35,14 @@ namespace TCC.Agenda.Models
 
         [ForeignKey("Plano")]
         public Guid PlanoId { get; set; }
+        [Display(Name = "Plano contratação")]
         public PlanoModel Plano { get; set; }
 
+        [Display(Name = "Data Cadastro")]
         public DateTime DataCadastro { get; set; }
+        [Display(Name = "Data Inativação")]
         public DateTime DataInativacao { get; set; }
+        
 
         public ICollection<PrestadorModel> Prestadores { get; set; }
 
