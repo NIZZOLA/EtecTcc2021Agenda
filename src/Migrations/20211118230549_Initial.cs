@@ -3,7 +3,15 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TCC.Agenda.Migrations
 {
+<<<<<<< HEAD
     public partial class Initial : Migration
+=======
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.cs
+    public partial class initial : Migration
+=======
+    public partial class Initial : Migration
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.cs
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -178,14 +186,32 @@ namespace TCC.Agenda.Migrations
                         name: "FK_PrestadorTipoDeServico_Prestador_PrestadorId",
                         column: x => x.PrestadorId,
                         principalTable: "Prestador",
+<<<<<<< HEAD
                         principalColumn: "PrestadorId",
                         onDelete: ReferentialAction.Restrict);
+=======
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.cs
+                        principalColumn: "PrestadorId");
+=======
+                        principalColumn: "PrestadorId",
+                        onDelete: ReferentialAction.Restrict);
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.cs
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78
                     table.ForeignKey(
                         name: "FK_PrestadorTipoDeServico_TipoDeServico_TipoDeServicoId",
                         column: x => x.TipoDeServicoId,
                         principalTable: "TipoDeServico",
+<<<<<<< HEAD
                         principalColumn: "TipoDeServicoId",
                         onDelete: ReferentialAction.Restrict);
+=======
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.cs
+                        principalColumn: "TipoDeServicoId");
+=======
+                        principalColumn: "TipoDeServicoId",
+                        onDelete: ReferentialAction.Restrict);
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.cs
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78
                 });
 
             migrationBuilder.CreateIndex(

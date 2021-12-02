@@ -48,19 +48,19 @@ namespace TCC.Agenda.Controllers
             return View(planoModel);
         }
 
-        // GET: Plano/Create
-        public IActionResult Create()
+        // GET: Plano/Criate
+        public IActionResult Criar()
         {
             CriaViewBags("Create", this.nomeController);
             return View();
         }
 
-        // POST: Plano/Create
+        // POST: Plano/Criate
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlanoId,Descricao,ValorMensal,LimiteDeUsuario,Ativo")] PlanoModel planoModel)
+        public async Task<IActionResult> Criate([Bind("PlanoId,Descricao,ValorMensal,LimiteDeUsuario,Ativo")] PlanoModel planoModel)
         {
             CriaViewBags("Create", this.nomeController);
             if (ModelState.IsValid)

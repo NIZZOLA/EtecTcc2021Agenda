@@ -21,12 +21,12 @@ namespace TCC.Agenda.Data
                 entity.HasOne(a => a.Prestador)
                     .WithMany(b => b.TiposDeServico)
                     .HasForeignKey(c => c.PrestadorId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                    .OnDelete(DeleteBehavior.NoAction);
 
                 entity.HasOne(a => a.TipoDeServico)
                     .WithMany(b => b.Prestadores)
                     .HasForeignKey(c => c.TipoDeServicoId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                    .OnDelete(DeleteBehavior.NoAction);
             });
 
             modelBuilder.Entity<PrestadorModel>(entity =>
