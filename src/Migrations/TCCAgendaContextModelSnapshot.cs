@@ -320,19 +320,19 @@ namespace TCC.Agenda.Migrations
                     b.HasOne("TCC.Agenda.Models.PrestadorModel", "Prestador")
                         .WithMany("Agendas")
                         .HasForeignKey("PrestadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("TCC.Agenda.Models.TipoDeServicoModel", "TipoDeServico")
                         .WithMany("Agendas")
                         .HasForeignKey("TipoDeServicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("TCC.Agenda.Models.UsuarioModel", "Usuario")
                         .WithMany("Agendas")
                         .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Prestador");
@@ -369,13 +369,13 @@ namespace TCC.Agenda.Migrations
                     b.HasOne("TCC.Agenda.Models.PrestadorModel", "Prestador")
                         .WithMany("TiposDeServico")
                         .HasForeignKey("PrestadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("TCC.Agenda.Models.TipoDeServicoModel", "TipoDeServico")
                         .WithMany("Prestadores")
                         .HasForeignKey("TipoDeServicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Prestador");

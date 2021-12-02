@@ -10,8 +10,8 @@ using TCC.Agenda.Data;
 namespace TCC.Agenda.Migrations
 {
     [DbContext(typeof(TCCAgendaContext))]
-    [Migration("20211117005555_inicial")]
-    partial class inicial
+    [Migration("20211123211447_Last 23.11")]
+    partial class Last2311
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,7 +58,7 @@ namespace TCC.Agenda.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("ValorCobrado")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(15,2)");
 
                     b.HasKey("AgendaId");
 
@@ -145,7 +145,7 @@ namespace TCC.Agenda.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("ValorMensal")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(15,2)");
 
                     b.HasKey("PlanoId");
 
@@ -218,7 +218,7 @@ namespace TCC.Agenda.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("PercentualDeParticipacao")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<Guid>("PrestadorId")
                         .HasColumnType("uniqueidentifier");
@@ -258,7 +258,7 @@ namespace TCC.Agenda.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<decimal>("ValorCobrado")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(15,2)");
 
                     b.HasKey("TipoDeServicoId");
 
@@ -322,19 +322,19 @@ namespace TCC.Agenda.Migrations
                     b.HasOne("TCC.Agenda.Models.PrestadorModel", "Prestador")
                         .WithMany("Agendas")
                         .HasForeignKey("PrestadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("TCC.Agenda.Models.TipoDeServicoModel", "TipoDeServico")
                         .WithMany("Agendas")
                         .HasForeignKey("TipoDeServicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("TCC.Agenda.Models.UsuarioModel", "Usuario")
                         .WithMany("Agendas")
                         .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Prestador");
@@ -360,7 +360,7 @@ namespace TCC.Agenda.Migrations
                     b.HasOne("TCC.Agenda.Models.EmpresaModel", "Empresa")
                         .WithMany("Prestadores")
                         .HasForeignKey("EmpresaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Empresa");
@@ -371,13 +371,13 @@ namespace TCC.Agenda.Migrations
                     b.HasOne("TCC.Agenda.Models.PrestadorModel", "Prestador")
                         .WithMany("TiposDeServico")
                         .HasForeignKey("PrestadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("TCC.Agenda.Models.TipoDeServicoModel", "TipoDeServico")
                         .WithMany("Prestadores")
                         .HasForeignKey("TipoDeServicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Prestador");

@@ -1,0 +1,75 @@
+@model IEnumerable<TCC.Agenda.Models.EmpresaModel>
+
+@{
+    ViewData["Title"] = ViewBag.NomeController;
+}
+
+<h1>@ViewBag.Acao de @ViewBag.NomeController</h1>
+
+<p>
+    <a asp-action="Create"><i class="bi bi-clipboard-plus" title="Incluir"></i> </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PessoaFisica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CpfCnpj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Plano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInativacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.Raw(item.PessoaFisica == true ? "Pessoa" : "Empresa")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CpfCnpj)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plano.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCadastro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataInativacao)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmpresaId"><i class="bi bi-pencil-square" title="Editar"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.EmpresaId"><i class="bi bi-folder2-open" title="Consultar"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.EmpresaId"><i class="bi bi-trash" title="Excluir"></i> </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

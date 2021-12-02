@@ -7,7 +7,7 @@
 <h1>@ViewBag.Acao de @ViewBag.NomeController</h1>
 
 <p>
-   <a asp-action="Create"><i class="bi bi-clipboard-plus"></i>CriarNovo</a>
+    <a asp-action="Create"><i class="bi bi-bookmark-plus"></i>Incluir </a>
 </p>
 <table class="table">
     <thead>
@@ -24,7 +24,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Ativo)
             </th>
-           
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -42,11 +42,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Ativo)
             </td>
-             <td>
-                    <a asp-action="Edit" asp-route-id="@item.PlanoId"><i class="bi bi-pencil-square" title="Editar"></i></a>
-                    <a asp-action="Details" asp-route-id="@item.PlanoId"><i class="bi bi-folder-plus" title="Consultar"></i></a>
-                    <a asp-action="Delete" asp-route-id="@item.PlanoId"><i class="bi bi-trash-fill" title="Excluir"></i></a>
-                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PlanoId"><i class="bi bi-pencil-square" title="Editar"></i></a>
+                <a asp-action="Details" asp-route-id="@item.PlanoId"><i class="bi bi-folder-check" title=Consultar></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.PlanoId"><i class="bi bi-trash" title=Apagar></i></a> |
+                
+            </td>
         </tr>
 }
     </tbody>

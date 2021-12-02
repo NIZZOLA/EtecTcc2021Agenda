@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TCC.Agenda.Models.TipoDeServicoModel>
+
+@{
+    ViewData["Title"] = "Serviços";
+}
+
+<h1>Serviços</h1>
+
+<p>
+    <a asp-action="Create"><i class="bi bi-clipboard-plus" title="Cadastrar"></i> </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detalhes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DuracaoMinutos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorCobrado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empresa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Detalhes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DuracaoMinutos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorCobrado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa.Nome)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TipoDeServicoId"><i class="bi bi-pencil-square" title="Editar"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.TipoDeServicoId"><i class="bi bi-search" title="Consultar"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.TipoDeServicoId"><i class="bi bi-trash" title="Excluir"></i> </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
