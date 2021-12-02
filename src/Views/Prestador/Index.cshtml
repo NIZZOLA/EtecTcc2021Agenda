@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Listagem de Prestadores</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"><i class="bi bi-clipboard-plus" title="Adicionar Prestador"></i></a>
 </p>
 <table class="table">
     <thead>
@@ -25,9 +25,6 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Senha)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Telefone)
             </th>
             <th>
@@ -40,12 +37,6 @@
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Endereco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bairro)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Bloqueado)
             </th>
             <th></th>
@@ -55,7 +46,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Empresa.EmpresaId)
+                @Html.DisplayFor(modelItem => item.Empresa.Nome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Admin)
@@ -65,9 +56,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Senha)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Telefone)
@@ -81,19 +69,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bairro)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Bloqueado)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PrestadorId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PrestadorId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PrestadorId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.PrestadorId"><i class="bi bi-pencil-square" title="Editar"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.PrestadorId"><i class="bi bi-folder2-open" title="Detalhes"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.PrestadorId"><i class="bi bi-trash" title="Excluir"></i></a>
             </td>
         </tr>
 }

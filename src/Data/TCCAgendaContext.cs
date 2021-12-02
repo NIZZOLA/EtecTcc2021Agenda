@@ -29,6 +29,14 @@ namespace TCC.Agenda.Data
                     .OnDelete(DeleteBehavior.NoAction);
             });
 
+            modelBuilder.Entity<PrestadorModel>(entity =>
+            {
+                entity.HasOne(a => a.Empresa)
+                    .WithMany(b => b.Prestadores)
+                    .HasForeignKey(c => c.EmpresaId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
             modelBuilder.Entity<AgendaModel>(entity =>
             {
                 entity.HasOne(a => a.Prestador)

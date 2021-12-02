@@ -10,8 +10,13 @@ using TCC.Agenda.Data;
 namespace TCC.Agenda.Migrations
 {
     [DbContext(typeof(TCCAgendaContext))]
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.Designer.cs
     [Migration("20211118231358_initial")]
     partial class initial
+=======
+    [Migration("20211118230549_Initial")]
+    partial class Initial
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,7 +63,7 @@ namespace TCC.Agenda.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("ValorCobrado")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(15,2)");
 
                     b.HasKey("AgendaId");
 
@@ -145,7 +150,7 @@ namespace TCC.Agenda.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("ValorMensal")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(15,2)");
 
                     b.HasKey("PlanoId");
 
@@ -218,7 +223,7 @@ namespace TCC.Agenda.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("PercentualDeParticipacao")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<Guid>("PrestadorId")
                         .HasColumnType("uniqueidentifier");
@@ -258,7 +263,7 @@ namespace TCC.Agenda.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<decimal>("ValorCobrado")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(15,2)");
 
                     b.HasKey("TipoDeServicoId");
 
@@ -360,7 +365,7 @@ namespace TCC.Agenda.Migrations
                     b.HasOne("TCC.Agenda.Models.EmpresaModel", "Empresa")
                         .WithMany("Prestadores")
                         .HasForeignKey("EmpresaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Empresa");
@@ -371,13 +376,21 @@ namespace TCC.Agenda.Migrations
                     b.HasOne("TCC.Agenda.Models.PrestadorModel", "Prestador")
                         .WithMany("TiposDeServico")
                         .HasForeignKey("PrestadorId")
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.Designer.cs
                         .OnDelete(DeleteBehavior.NoAction)
+=======
+                        .OnDelete(DeleteBehavior.Restrict)
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.Designer.cs
                         .IsRequired();
 
                     b.HasOne("TCC.Agenda.Models.TipoDeServicoModel", "TipoDeServico")
                         .WithMany("Prestadores")
                         .HasForeignKey("TipoDeServicoId")
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.Designer.cs
                         .OnDelete(DeleteBehavior.NoAction)
+=======
+                        .OnDelete(DeleteBehavior.Restrict)
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.Designer.cs
                         .IsRequired();
 
                     b.Navigation("Prestador");

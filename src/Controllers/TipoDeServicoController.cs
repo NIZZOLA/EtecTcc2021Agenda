@@ -48,7 +48,7 @@ namespace TCC.Agenda.Controllers
         // GET: TipoDeServico/Create
         public IActionResult Create()
         {
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "EmpresaId");
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "Nome");
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace TCC.Agenda.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "EmpresaId", tipoDeServicoModel.EmpresaId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "Nome", tipoDeServicoModel.EmpresaId);
             return View(tipoDeServicoModel);
         }
 
@@ -83,7 +83,7 @@ namespace TCC.Agenda.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "EmpresaId", tipoDeServicoModel.EmpresaId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "Nome", tipoDeServicoModel.EmpresaId);
             return View(tipoDeServicoModel);
         }
 
@@ -119,7 +119,7 @@ namespace TCC.Agenda.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "EmpresaId", tipoDeServicoModel.EmpresaId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "Nome", tipoDeServicoModel.EmpresaId);
             return View(tipoDeServicoModel);
         }
 

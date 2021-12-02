@@ -3,7 +3,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TCC.Agenda.Migrations
 {
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.cs
     public partial class initial : Migration
+=======
+    public partial class Initial : Migration
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.cs
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +17,7 @@ namespace TCC.Agenda.Migrations
                 {
                     PlanoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Descricao = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    ValorMensal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ValorMensal = table.Column<decimal>(type: "decimal(15,2)", nullable: false),
                     LimiteDeUsuario = table.Column<int>(type: "int", nullable: false),
                     Ativo = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -98,7 +102,7 @@ namespace TCC.Agenda.Migrations
                         column: x => x.EmpresaId,
                         principalTable: "Empresa",
                         principalColumn: "EmpresaId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,7 +113,7 @@ namespace TCC.Agenda.Migrations
                     Nome = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
                     Detalhes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DuracaoMinutos = table.Column<int>(type: "int", nullable: false),
-                    ValorCobrado = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ValorCobrado = table.Column<decimal>(type: "decimal(15,2)", nullable: false),
                     Ativo = table.Column<bool>(type: "bit", nullable: false),
                     EmpresaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -134,7 +138,7 @@ namespace TCC.Agenda.Migrations
                     DataHoraAgendada = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataHoraTermino = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TipoDeServicoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ValorCobrado = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ValorCobrado = table.Column<decimal>(type: "decimal(15,2)", nullable: false),
                     Realizado = table.Column<bool>(type: "bit", nullable: false),
                     CanceladoUsuario = table.Column<bool>(type: "bit", nullable: false),
                     CanceladoPrestador = table.Column<bool>(type: "bit", nullable: false),
@@ -169,7 +173,7 @@ namespace TCC.Agenda.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PrestadorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TipoDeServicoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PercentualDeParticipacao = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    PercentualDeParticipacao = table.Column<decimal>(type: "decimal(18,4)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -178,12 +182,22 @@ namespace TCC.Agenda.Migrations
                         name: "FK_PrestadorTipoDeServico_Prestador_PrestadorId",
                         column: x => x.PrestadorId,
                         principalTable: "Prestador",
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.cs
                         principalColumn: "PrestadorId");
+=======
+                        principalColumn: "PrestadorId",
+                        onDelete: ReferentialAction.Restrict);
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.cs
                     table.ForeignKey(
                         name: "FK_PrestadorTipoDeServico_TipoDeServico_TipoDeServicoId",
                         column: x => x.TipoDeServicoId,
                         principalTable: "TipoDeServico",
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.cs
                         principalColumn: "TipoDeServicoId");
+=======
+                        principalColumn: "TipoDeServicoId",
+                        onDelete: ReferentialAction.Restrict);
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.cs
                 });
 
             migrationBuilder.CreateIndex(

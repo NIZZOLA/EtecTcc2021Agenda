@@ -10,9 +10,10 @@ using TCC.Agenda.Models;
 
 namespace TCC.Agenda.Controllers
 {
-    public class EmpresaController : Controller
+    public class EmpresaController : ControllerExtended
     {
         private readonly TCCAgendaContext _context;
+        private string nomeController = "Empresas";
 
         public EmpresaController(TCCAgendaContext context)
         {
@@ -22,6 +23,7 @@ namespace TCC.Agenda.Controllers
         // GET: Empresa
         public async Task<IActionResult> Index()
         {
+            base.CriaViewBags("Index", this.nomeController);
             var tCCAgendaContext = _context.Empresas.Include(e => e.Plano);
             return View(await tCCAgendaContext.ToListAsync());
         }
@@ -48,7 +50,7 @@ namespace TCC.Agenda.Controllers
         // GET: Empresa/Create
         public IActionResult Create()
         {
-            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "PlanoId");
+            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "Descricao");
             return View();
         }
 
@@ -62,11 +64,12 @@ namespace TCC.Agenda.Controllers
             if (ModelState.IsValid)
             {
                 empresaModel.EmpresaId = Guid.NewGuid();
+                empresaModel.DataCadastro = DateTime.Now;
                 _context.Add(empresaModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "PlanoId", empresaModel.PlanoId);
+            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "Descricao", empresaModel.PlanoId);
             return View(empresaModel);
         }
 
@@ -83,7 +86,7 @@ namespace TCC.Agenda.Controllers
             {
                 return NotFound();
             }
-            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "PlanoId", empresaModel.PlanoId);
+            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "Descricao", empresaModel.PlanoId);
             return View(empresaModel);
         }
 
@@ -119,7 +122,7 @@ namespace TCC.Agenda.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "PlanoId", empresaModel.PlanoId);
+            ViewData["PlanoId"] = new SelectList(_context.Set<PlanoModel>(), "PlanoId", "Descricao", empresaModel.Plano);
             return View(empresaModel);
         }
 

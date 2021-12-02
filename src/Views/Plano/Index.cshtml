@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<TCC.Agenda.Models.PlanoModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = ViewBag.NomeController;
 }
 
-<h1>Index</h1>
+<h1>@ViewBag.Acao de @ViewBag.NomeController</h1>
 
 <p>
     <a asp-action="Criar">Incluir</a>
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Ativo)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PlanoId">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.PlanoId">Consultar</a> |
-                <a asp-action="delete" asp-route-id="@item.PlanoId"><i class="bi bi-backspace"></i>Apagar</a>
+                <a asp-action="Edit" asp-route-id="@item.PlanoId"><i class="bi bi-pencil-square" title="Editar"></i></a>
+                <a asp-action="Details" asp-route-id="@item.PlanoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PlanoId">Delete</a>
             </td>
         </tr>
 }

@@ -10,8 +10,18 @@ using TCC.Agenda.Data;
 namespace TCC.Agenda.Migrations
 {
     [DbContext(typeof(TCCAgendaContext))]
+<<<<<<< HEAD
     [Migration("20211118230549_Initial")]
     partial class Initial
+=======
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.Designer.cs
+    [Migration("20211118231358_initial")]
+    partial class initial
+=======
+    [Migration("20211118230549_Initial")]
+    partial class Initial
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.Designer.cs
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -371,13 +381,29 @@ namespace TCC.Agenda.Migrations
                     b.HasOne("TCC.Agenda.Models.PrestadorModel", "Prestador")
                         .WithMany("TiposDeServico")
                         .HasForeignKey("PrestadorId")
+<<<<<<< HEAD
                         .OnDelete(DeleteBehavior.Restrict)
+=======
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.Designer.cs
+                        .OnDelete(DeleteBehavior.NoAction)
+=======
+                        .OnDelete(DeleteBehavior.Restrict)
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.Designer.cs
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78
                         .IsRequired();
 
                     b.HasOne("TCC.Agenda.Models.TipoDeServicoModel", "TipoDeServico")
                         .WithMany("Prestadores")
                         .HasForeignKey("TipoDeServicoId")
+<<<<<<< HEAD
                         .OnDelete(DeleteBehavior.Restrict)
+=======
+<<<<<<< HEAD:src/Migrations/20211118231358_initial.Designer.cs
+                        .OnDelete(DeleteBehavior.NoAction)
+=======
+                        .OnDelete(DeleteBehavior.Restrict)
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78:src/Migrations/20211118230549_Initial.Designer.cs
+>>>>>>> 4b827a0df07acf2083128e012e692df2dcfcbe78
                         .IsRequired();
 
                     b.Navigation("Prestador");
